@@ -1,3 +1,3 @@
-＃Curry Project
+# Curry Project
 
-＃# in Develop
+# in Develop
