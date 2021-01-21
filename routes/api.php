@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//デフォルトの認証api
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+//awsとの連携するための処理(保存されている画像IDを引っ張る)

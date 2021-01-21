@@ -13,14 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//トップ画面
 Route::get('/', function () {
     return view('index');
 });
 
+//ログイン画面
 Route::get('/login', function () {
     return view('login');
 });
 
+//ID登録画面
 Route::get('/register', function() {
     return view('register');
 });
