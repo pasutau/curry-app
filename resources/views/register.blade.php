@@ -13,7 +13,7 @@
     <div class="my-navbar-control">
       <a class="my-navbar-item" href="/login">ログイン</a>
         ｜
-      <a class="my-navbar-item" href="http://todooo-app.herokuapp.com/register">会員登録</a>
+      <a class="my-navbar-item" href="http://todooo-app.herokuapp.com/register">ユーザ登録</a>
     </div>
   </nav>
 </header>
@@ -22,7 +22,7 @@
     <div class="row">
       <div class="col col-md-offset-3 col-md-6">
         <nav class="panel panel-default">
-          <div class="panel-heading">会員登録</div>
+          <div class="panel-heading">ユーザ登録</div>
           <div class="panel-body">
             <form action="http://todooo-app.herokuapp.com/register" method="POST">
               <input type="hidden" name="_token" value="4JOzSn3DHS9HWdmsIyCjfKt3Ywnxg5mqWQk7580L">

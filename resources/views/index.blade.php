@@ -13,7 +13,7 @@
     <div class="my-navbar-control">
       <a class="my-navbar-item" href="/login">ログイン</a>
         ｜
-      <a class="my-navbar-item" href="/register">会員登録</a>
+      <a class="my-navbar-item" href="/register">ユーザ登録</a>
     </div>
   </nav>
 </header>
@@ -30,7 +30,7 @@
                   　<a class="btn btn-warning btn-block" style="font-size: 200%" href="/login">ログイン</a>
                   </div>
                   <div class="form-group">
-                    <a class="btn btn-warning btn-block" style="font-size: 200%" href="/register">会員登録</a>
+                    <a class="btn btn-warning btn-block" style="font-size: 200%" href="/register">ユーザ登録</a>
                   </div>
               </form>
             </div>
