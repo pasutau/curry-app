@@ -1,6 +1,7 @@
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/bootflat/2.0.4/css/bootflat.min.css');
 
+/* 背景 */
 body {
     background-image: url('/images/background-image-2.png');
     background-color: #f4f7f8;
@@ -24,6 +25,14 @@ body::before {
     z-index: -1;
 }
 
+/* 画面タイトル */
+.cards + .ttl {
+    color: indianred;
+    font-family: 'Potta One', cursive;
+    flex:none;
+}
+
+/* ナビ */
 .navbar {
     margin: 2rem 0 2.5rem 0;
 }
@@ -35,7 +44,7 @@ body::before {
     height: 6rem;
     justify-content: space-between;
     padding: 0 2%;
-    margin-bottom: 3rem;
+    /* margin-bottom: 3rem; */
 }
 
 .my-navbar-brand {
@@ -62,4 +71,85 @@ a.my-navbar-item:hover {
 .form-control[disabled],
 .form-control[readonly] {
     background-color: #fff;
+}
+
+.form-group {
+    align-items: center;
+}
+
+/* =======ユーザ登録======= */
+.container {
+    margin-top: 250px;
+    margin-bottom: 15%;
+}
+
+/* =======画像投稿======= */
+.upload_container {
+    margin: 15px;
+    width: 60%;
+}
+
+.upload_container label[for="title_name"] {
+    color:#f9f9f9;
+
+}
+
+.upload_container .upload_btn {
+    margin-top: 20px;
+}
+
+.upload_container .title_block {
+    width: 60%;
+}
+
+/* =======投稿画像一覧======= */
+/* 投稿画像コンテンツ */
+.cards {
+    background-color: rgba(255,248,220,0.5);
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+    height: 100vh;
+
+}
+
+.cards .card {
+    width: 25%;
+    padding: 15px;
+}
+
+/* タブレット用 */
+@media(max-width: 767px) {
+    .cards .card {
+       width: 50%;
+       padding: 10px;
+   }
+}
+
+/* スマホ用 */
+@media(max-width: 479px) {
+    .cards .card {
+       width: 75%;
+       padding: 10px;
+   }
+    .cards {
+        width:auto;
+        margin-left:25%;
+    }
+}
+.cards .card .card-img-top {
+    width: 100%;
+}
+
+.cards .card .card-img-top::before {
+    content: "";
+    display: block;
+    width: 100%;
+    padding-top: 56.25%;
+}
+
+a.img-title {
+    font-family: 'Potta One', cursive;
+    color: black;
+    font-size:20px;
 }

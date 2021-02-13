@@ -32,7 +32,7 @@
             </div>
           </nav>
           <div class="text-center">
-            <a href="{{ route('password.request') }}" style="color: #ffff; font-size:120%">パスワードの変更はこちらから</a>
+            <a href="{{ route('password.request') }} " style="color: #ffff; font-size:120%">パスワードの変更はこちらから</a>
           </div>
         </div>
       </div>
