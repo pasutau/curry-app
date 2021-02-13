@@ -23,7 +23,9 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                // return redirect(RouteServiceProvider::HOME);
+                // 認証済みのユーザを登録画面や、ログイン画面に遷移させず、dispへリダイレクト
+                return redirect('disp');
             }
         }
 

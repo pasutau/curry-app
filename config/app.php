@@ -161,8 +161,10 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        //aws-sdk-php-laravel Service Providers//
+
+        //library Service Providers//
         Aws\Laravel\AwsServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -228,8 +230,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        //aws-sdk-php-laravel aliases//
+
+        //Librarys aliases//
         'AWS' => Aws\Laravel\AwsFacade::Class,
+        'Image' => \Intervention\Image\Facades\Image::class,
 
     ],
 
