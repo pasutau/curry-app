@@ -13,17 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return view('index');
+});
+
 Route::group(['middleware' => 'auth'], function () {
     //トップ画面
-    Route::get('/', function () {
-        return view('index');
-    });
+
+
+    // Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 
     //ログイン画面
     Route::get('login', function () {
         return view('login');
     });
 
+    //ログイン情報送信時
     Route::post('login', function () {
         return view('disp');
     });
@@ -37,7 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('register', 'App\Http\Controllers\UserRegistController@register')->name('register');
 
     //画像投稿画面表示時
-    Route::get('/image_upload', function() {
+    Route::get('image_upload', function() {
         return view('image_upload');
     });
 
@@ -48,7 +53,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('upload', 'App\Http\Controllers\ImageController@upload')->name('upload');
 
 });
-
 
 //認証メソッド定義
 Auth::routes();
