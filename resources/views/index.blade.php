@@ -8,6 +8,17 @@
         <nav class="panel panel-warning">
           <div class="panel-heading">メニュー</div>
           <div class="panel-body">
+            @if(Auth::check())
+            {{-- <div class="form-group">
+              <a class="btn btn-warning btn-block" style="font-size: 200%" href="">マイページ</a>
+            </div> --}}
+            <div class="form-group">
+              <a class="btn btn-warning btn-block" style="font-size: 200%" href="image_upload">画像投稿</a>
+            </div>
+            <div class="form-group">
+              <a class="btn btn-warning btn-block" style="font-size: 200%" href="disp">画像一覧</a>
+            </div>
+            @else
             <div class="form-group">
               <a class="btn btn-warning btn-block" style="font-size: 200%" href="login">ログイン</a>
             </div>
@@ -15,6 +26,7 @@
               <a class="btn btn-warning btn-block" style="font-size: 200%" href="register">ユーザ登録</a>
             </div>
           </div>
+            @endif
         </nav>
         <div class="text-center">
           <a href="{{ route('password.request') }}" style="color: #ffff; font-size:120%">パスワードの変更はこちらから</a>

@@ -42,7 +42,17 @@ class ImageController extends Controller
         $post->image_url = $url;
         $post->save();
 
-        //AWSへ格納済みの画像一覧URL取得
+        // //AWSへ格納済みの画像一覧URL取得
+        // $disk = Storage::disk('s3');
+        // $files = $disk->files('');
+        // $file_url = array();
+        // for ($i = 0; $i < count($files); $i++)  {
+        //     $file_url[$i] = $disk->url($files[$i]);
+
+        // }
+        //DBから登録済みの画像タイトルを取得
+        $posts = DB::table('posts');
+        $image_title = $posts->orderBy('image_url')->pluck('image_title')->toArray();//投稿画像タイトルの取得
         $disk = Storage::disk('s3');
         $files = $disk->files('');
         $file_url = array();
@@ -50,7 +60,7 @@ class ImageController extends Controller
             $file_url[$i] = $disk->url($files[$i]);
 
         }
-        return view('disp', compact('file_url'));
+        return view('disp', compact('file_url','image_title'));
     }
 
     public function index()
@@ -58,7 +68,6 @@ class ImageController extends Controller
         //DBから登録済みの画像タイトルを取得
         $posts = DB::table('posts');
         $image_title = $posts->orderBy('image_url')->pluck('image_title')->toArray();//投稿画像タイトルの取得
-
         $disk = Storage::disk('s3');
         $files = $disk->files('');
         $file_url = array();

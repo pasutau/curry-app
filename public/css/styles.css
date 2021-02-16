@@ -14,10 +14,9 @@ body::before {
     background-image: url('/images/background-image-2.png');
     background-color: #f4f7f8;
     content: '';
-    opacity: 0.5;/*半透明カラーの透明度*/
-    filter: blur(9px);/*ぼかし度*/
+    opacity: 0.5;
+    filter: blur(9px);
     position: absolute;
-    /* 参考: http://designcolor-web.com/2016/09/14/css-blur-effects-background/*/
     top: -8px;
     left: -8px;
     right: -8px;
@@ -30,6 +29,10 @@ body::before {
     color: indianred;
     font-family: 'Potta One', cursive;
     flex:none;
+}
+
+.content {
+    display: flex;
 }
 
 /* ナビ */
@@ -77,11 +80,17 @@ a.my-navbar-item:hover {
     align-items: center;
 }
 
+/* =======サイドバー======= */
+/* .sidebar {
+    display: flex;
+} */
+
 /* =======ユーザ登録======= */
 .container {
     margin-top: 250px;
     margin-bottom: 15%;
 }
+
 
 /* =======画像投稿======= */
 .upload_container {
@@ -102,14 +111,16 @@ a.my-navbar-item:hover {
     width: 60%;
 }
 
+
 /* =======投稿画像一覧======= */
 /* 投稿画像コンテンツ */
 .cards {
     background-color: rgba(255,248,220,0.5);
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     overflow: scroll;
-    height: 100vh;
+    height: 95vh;
 
 }
 
@@ -134,7 +145,7 @@ a.my-navbar-item:hover {
    }
     .cards {
         width:auto;
-        margin-left:25%;
+        justify-content: center;
     }
 }
 .cards .card .card-img-top {

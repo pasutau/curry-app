@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UsersTable extends Migration
+class AddNameToPosts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class UsersTable extends Migration
      */
     public function up()
     {
-        //
-        // $table->string('image_file_name',100);
+        Schema::table('posts', function (Blueprint $table) {
+            //
+            $table->integer('user_name')->string()->unsigned();
+
+            $table->foreign('user_name')->references('name');
+        });
     }
 
     /**
@@ -24,6 +28,10 @@ class UsersTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('posts', function (Blueprint $table) {
+            //
+
+        });
     }
 }
+

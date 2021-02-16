@@ -15,7 +15,7 @@ class ImageTitlePostsTable extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             //
-            $table->string('image_title',100);
+            // $table->string('image_title',100);
         });
     }
 

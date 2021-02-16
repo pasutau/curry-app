@@ -18,10 +18,10 @@ class UsersTableSeeder extends Seeder
         //test user
         DB::table('users')->insert([
             'name' => 'test1',
-            'email' => 'test1@email.com',
-            'password' => bcrypt('test1'),
+            'email' => 'test1@gmail.com',
+            'password' => bcrypt('test1test1'),
             'create_at' => Carbon::now(),
-            'upd_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
     }
 }

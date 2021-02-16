@@ -12,13 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+    //トップ画面
 Route::get('/', function () {
     return view('index');
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    //トップ画面
+
 
 
     // Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
