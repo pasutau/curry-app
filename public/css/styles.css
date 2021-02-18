@@ -31,11 +31,11 @@ body::before {
     flex:none;
 }
 
-.content {
+/* .content {
     display: flex;
-}
+} */
 
-/* ナビ */
+/* =======ナビゲーションバー======= */
 .navbar {
     margin: 2rem 0 2.5rem 0;
 }
@@ -47,7 +47,6 @@ body::before {
     height: 6rem;
     justify-content: space-between;
     padding: 0 2%;
-    /* margin-bottom: 3rem; */
 }
 
 .my-navbar-brand {
@@ -57,11 +56,24 @@ body::before {
 .my-navbar-brand,
 .my-navbar-item {
     color: #8c8c8c;
+    margin: 0 15px;
 }
 
 .my-navbar-brand:hover,
-a.my-navbar-item:hover {
+a.my-navbar-item:hover,
+div.my-navbar-item:hover {
     color: #ffffff;
+}
+
+.my-navbar-control {
+    display:flex;
+    align-items:center;
+}
+
+/* メニューアイコン */
+.navbar-menu {
+    width:25px;
+    margin:0 0 0 15px;
 }
 
 .table td:nth-child(2),
@@ -80,10 +92,52 @@ a.my-navbar-item:hover {
     align-items: center;
 }
 
+
 /* =======サイドバー======= */
-/* .sidebar {
-    display: flex;
-} */
+ul {
+    list-style: none;
+    padding: 0;
+    margin-left: 0;
+}
+
+#nav {
+    position:absolute;
+    right:-25%;
+    width: 50%;
+    height: 100vh;
+    background: #000000ad;
+    background-blend-mode:lighten;
+    transition: .7s;
+}
+
+#nav ul {
+    padding-top: 80px;
+}
+
+#nav ul li {
+    list-style-type: none;
+    font-size: 20px;
+}
+
+#nav a{
+    display: block;
+    text-decoration: none;
+    color: #ffffff;
+    font-family:bold;
+    margin: 0 15px;
+    padding: 10px;
+    transition: .5s;
+}
+#nav li a:hover{
+    color: #ffffff;
+    background: #cd5c5c;
+    border-bottom: none;
+}
+
+.in{
+    transform: translateX(100%);
+  }
+
 
 /* =======ユーザ登録======= */
 .container {

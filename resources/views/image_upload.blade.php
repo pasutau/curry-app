@@ -1,6 +1,4 @@
-@component('components.header')
-@endcomponent
-
+@include('components.header')
   <main>
   <form action="upload" method="POST" enctype="multipart/form-data">
     @csrf

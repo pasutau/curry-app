@@ -15,14 +15,20 @@
   <div class="content">
     <div class="cards">
       {{-- 投稿画像、タイトル一覧表示 --}}
-      @for ($i = 0; $i < count($file_url); $i++)
+      @foreach ($image_info as $url=>$title)
         <div class="card">
-            <img class="card-img-top" src="{{ url("{$file_url[$i]}")}}" />
+            <img class="card-img-top" src="{{ url("$url")}}" />
             <div class="img-title">
-                <a class="img-title" href="">{{ $image_title[$i] }}</a>
+              <a class="img-title" href="">{{ $title }}</a>
             </div>
+            <form action="{{  route('delete')  }}" method="POST">
+              @method('DELETE')
+              @csrf
+              <button type="submit" class="btn btn-danger">削除</button>
+              <input type="hidden" name="url" value="{{ $url }} ">
+            </form>
         </div>
-      @endfor
+      @endforeach
     </div>
   </div>
 </main>

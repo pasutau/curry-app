@@ -19,10 +19,6 @@ Route::get('/', function () {
 
 Route::group(['middleware' => 'auth'], function () {
 
-
-
-    // Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
-
     //ログイン画面
     Route::get('login', function () {
         return view('login');
@@ -37,6 +33,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('register', function() {
         return view('register');
     });
+
+    //マイページ
+    Route::get('mypage', 'App\Http\Controllers\ImageController@mypage_index')->name('mypage');
+
+    //画像削除ボタン押下
+    Route::delete('delete', 'App\Http\Controllers\ImageController@delete')->name('delete');
 
     //ユーザ登録フォーム送信時
     Route::post('register', 'App\Http\Controllers\UserRegistController@register')->name('register');

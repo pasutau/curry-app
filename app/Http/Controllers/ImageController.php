@@ -6,12 +6,16 @@ use App\Models\post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Validator;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use SebastianBergmann\Environment\Console;
 
 class ImageController extends Controller
 {
     public function upload(Request $request)
+    /*
     // 画像ファイルをS3へアップロードする
+    */
     {
         //upload画像に対してのバリデーション
         $validator = Validator::make($request->all(), [
@@ -25,12 +29,6 @@ class ImageController extends Controller
 
         $file = $request->file('file');
 
-        // //アップロード画像リサイズ
-        // $resized_img = Image::make($file)
-        //     ->resize(300, null, function ($constraint){
-        //         $constraint->aspectRatio();
-        //     });
-
         //ディレクトリ名と、ファイル名のパスが返却される
         $path = Storage::disk('s3')->putFile('/', $file, 'public');
         //アップロード先のファイルパス（URLを取得）を取得
@@ -40,7 +38,7 @@ class ImageController extends Controller
         $post = new Post;
         $post->image_title = $request->image_file_name;
         $post->image_url = $url;
-        $post->save();
+        Auth::user()->posts()->save($post);
 
         // //AWSへ格納済みの画像一覧URL取得
         // $disk = Storage::disk('s3');
@@ -64,6 +62,9 @@ class ImageController extends Controller
     }
 
     public function index()
+    /*
+    // S3上の画像全てを一覧表示
+    */
     {
         //DBから登録済みの画像タイトルを取得
         $posts = DB::table('posts');
@@ -75,14 +76,43 @@ class ImageController extends Controller
             $file_url[$i] = $disk->url($files[$i]);
 
         }
+        sort($file_url,SORT_STRING);
+
          return view('disp', compact('file_url','image_title'));
+
     }
 
-    public function delete ($filename)
-    //　選択画像のS3のファイル削除後、一覧画面へリダイレクト
+    public function mypage_index()
+    /*
+    // ユーザが投稿した画像のみ表示する
+    */
     {
+        //タイトル、URLをDBから取得
+        $posts = DB::table('posts');
+        $user_id = Auth::id();
+        $image_info = $posts->where('user_id', $user_id)->orderBy('image_url')->pluck('image_title', 'image_url')->toArray();
+
+        return view('mypage', compact('image_info'));
+    }
+
+    public function delete(Request $request)
+    /*
+    //　選択画像のS3のファイル削除後、一覧画面へリダイレクト
+    */
+    {
+        $url = $request->url;//"https://curry-image.s3.ap-northeast-1.amazonaws.com/Gbu58UwjyHnpPZQarl5NZCkAXhHgU0ddpmxiMU2M.jpg"
+
+        //postsテーブルから対象のレコードを削除
+        $posts = DB::table('posts');
+        $user_id = Auth::id();
+        $db_delete = $posts->where('image_url', '=', $url)->delete();
+
+        //s3から対象のデータを削除
+        $s3img_name = $url;
+
+
         $disk = Storage::disk('s3');
-        $disk->delete($filename);
-        return redirect()->action('ImageController@index');
+        $disk->delete($s3img_name);
+        return redirect()->action('ImageController@mypage_index');
     }
 }

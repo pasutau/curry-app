@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNameToPosts extends Migration
+class DropPosts extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +15,7 @@ class AddNameToPosts extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             //
-            $table->integer('user_name')->string()->unsigned();
-
-            $table->foreign('user_name')->references('name');
+            Schema::drop('posts');
         });
     }
 
@@ -30,8 +28,6 @@ class AddNameToPosts extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             //
-
         });
     }
 }
-

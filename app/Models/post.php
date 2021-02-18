@@ -10,5 +10,11 @@ class post extends Model
     protected $fillable = [
         'image_file_name',
         'image_title',
+        'image_url',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

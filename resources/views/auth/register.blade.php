@@ -1,6 +1,4 @@
-@component('components.header')
-@endcomponent
-
+@include('components.header')
 <main>
   <div class="container">
     <div class="row">
