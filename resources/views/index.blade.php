@@ -22,6 +22,9 @@
             <div class="form-group">
               <a class="btn btn-warning btn-block" style="font-size: 200%" href="disp">画像一覧</a>
             </div>
+            <div class="form-group">
+              <a class="btn btn-warning btn-block" style="font-size: 200%" href="mypage">マイページ</a>
+            </div>
             @else
             <div class="form-group">
               <a class="btn btn-warning btn-block" style="font-size: 200%" href="login">ログイン</a>

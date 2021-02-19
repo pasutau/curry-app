@@ -100,19 +100,18 @@ class ImageController extends Controller
     //　選択画像のS3のファイル削除後、一覧画面へリダイレクト
     */
     {
-        $url = $request->url;//"https://curry-image.s3.ap-northeast-1.amazonaws.com/Gbu58UwjyHnpPZQarl5NZCkAXhHgU0ddpmxiMU2M.jpg"
+        $url = $request->url;
+        //"https://curry-image.s3.ap-northeast-1.amazonaws.com/Gbu58UwjyHnpPZQarl5NZCkAXhHgU0ddpmxiMU2M.jpg"
 
         //postsテーブルから対象のレコードを削除
         $posts = DB::table('posts');
-        $user_id = Auth::id();
         $db_delete = $posts->where('image_url', '=', $url)->delete();
 
         //s3から対象のデータを削除
-        $s3img_name = $url;
-
-
+        $s3img_name = explode('/', $url);
         $disk = Storage::disk('s3');
         $disk->delete($s3img_name);
-        return redirect()->action('ImageController@mypage_index');
+        // return redirect()->action('ImageController@mypage_index');
+        return back();
     }
 }

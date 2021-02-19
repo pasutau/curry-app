@@ -14,6 +14,7 @@
 <main>
   <div class="content">
     <div class="cards">
+
       {{-- 投稿画像、タイトル一覧表示 --}}
       @foreach ($image_info as $url=>$title)
         <div class="card">
@@ -24,8 +25,19 @@
             <form action="{{  route('delete')  }}" method="POST">
               @method('DELETE')
               @csrf
-              <button type="submit" class="btn btn-danger">削除</button>
-              <input type="hidden" name="url" value="{{ $url }} ">
+              <div id="del-modal-open" type="submit" class="btn btn-danger">削除</div>
+              <input type="hidden" id="img-del-submit" name="url" value="{{ $url }} ">
+
+              {{--　削除確認ウィンドウ --}}
+              <div id="del-confirm-mask" class="del-confirm-mask"></div>
+              <div id="del-modal" class="del-modal" data-target="del-modal{{ $loop->index }}">
+                <p class="del-message">{{ $title }} を削除しますか？</p>
+                <div class="del-btns">
+                  <button id="del-ok" class="btn btn-danger">削除する</button>
+                  <div id="del-cancel" class="btn btn-default">キャンセル</div>
+                </div>
+              </div>
+
             </form>
         </div>
       @endforeach
@@ -44,6 +56,27 @@
       document.getElementById('nav').classList.toggle('in');
     });
   </script>
-@endif
+  <script>
+    //削除確認画面の動作
+	const open = document.getElementById('del-modal-open');
+	const close = document.getElementById('del-cancel');
+	const modal = document.getElementById('del-modal');
+	const mask = document.getElementById('del-confirm-mask');
+
+	open.addEventListener('click', function () {
+    mask.classList.remove('del-confirm-mask');
+	  modal.classList.remove('del-modal');
+	});
+
+	close.addEventListener('click',function () {
+		mask.classList.add('del-confirm-mask');
+    modal.classList.add('del-modal');
+	});
+
+	mask.addEventListener('click',function () {
+		close.click();
+	});
+  </script>
+  @endif
 </body>
 </html>
