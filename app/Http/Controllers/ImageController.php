@@ -101,7 +101,6 @@ class ImageController extends Controller
     */
     {
         $url = $request->url;
-        //"https://curry-image.s3.ap-northeast-1.amazonaws.com/Gbu58UwjyHnpPZQarl5NZCkAXhHgU0ddpmxiMU2M.jpg"
 
         //postsテーブルから対象のレコードを削除
         $posts = DB::table('posts');
@@ -111,7 +110,6 @@ class ImageController extends Controller
         $s3img_name = explode('/', $url);
         $disk = Storage::disk('s3');
         $disk->delete($s3img_name);
-        // return redirect()->action('ImageController@mypage_index');
         return back();
     }
 }

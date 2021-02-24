@@ -22,7 +22,7 @@
             <div class="img-title">
               <a class="img-title" href="">{{ $title }}</a>
             </div>
-            <form action="{{  route('delete')  }}" method="POST">
+            <form action="delete" method="POST">
               @method('DELETE')
               @csrf
               <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#sampleModal{{ $loop->index }}">
@@ -30,20 +30,22 @@
               </button>
               <input type="hidden" id="img-del-submit" name="url" value="{{ $url }} ">
 
-              <!-- モーダル・ダイアログ -->
-              <div class="modal fade" id="sampleModal{{ $loop->index }}" tabindex="-1">
-                <div class="modal-dialog">
+              <!-- モーダル画面 -->
+              <div class="modal fade　modal-dialog-centered" id="sampleModal{{ $loop->index }}" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-                      <h4 class="modal-title">本当に削除してもよいですか？</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                      <h4 class="modal-title">本当に削除してもよろしいですか？</h4>
                     </div>
                     <div class="modal-body">
                       削除対象画像：{{ $title }}
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-                      <button type="button" class="btn btn-primary">削除</button>
+                      <button type="submit" class="btn btn-primary">削除</button>
                     </div>
                   </div>
                 </div>
@@ -68,31 +70,7 @@
       document.getElementById('nav').classList.toggle('in');
     });
   </script>
-  {{-- <script>
-    //削除確認画面の動作
-	const open = document.getElementById('del-modal-open');
-	const close = document.getElementById('del-cancel');
-	const dmodal = document.getElementById('del-modal');
-	const mask = document.getElementById('del-confirm-mask');
-
-
-
-	open.addEventListener('click', function (e) {
-    mask.classList.remove('del-confirm-mask');
-	  dmodal.classList.remove('del-modal');
-	});
-
-	close.addEventListener('click',function () {
-		mask.classList.add('del-confirm-mask');
-    dmodal.classList.add('del-modal');
-	});
-
-	mask.addEventListener('click',function () {
-		close.click();
-	});
-  </script> --}}
-  {{-- <script src="/Users/pasutau/Projects/curry-app/resources/js/app.js"></script> --}}
-
   @endif
+  <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>

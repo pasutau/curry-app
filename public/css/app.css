@@ -6311,7 +6311,9 @@ a.close.disabled {
 }
 
 .modal-header {
+/*【修正】モーダルヘッダー×ボタンの位置調整の為、
   display: flex;
+*/
   align-items: flex-start;
   justify-content: space-between;
   padding: 1rem 1rem;
@@ -6334,6 +6336,10 @@ a.close.disabled {
   position: relative;
   flex: 1 1 auto;
   padding: 1rem;
+}
+
+div.modal-body {
+  font-size: 1.5rem;
 }
 
 .modal-footer {
