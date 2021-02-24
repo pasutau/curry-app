@@ -25,16 +25,27 @@
             <form action="{{  route('delete')  }}" method="POST">
               @method('DELETE')
               @csrf
-              <div id="del-modal-open" type="submit" class="btn btn-danger">削除</div>
+              <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#sampleModal{{ $loop->index }}">
+                削除
+              </button>
               <input type="hidden" id="img-del-submit" name="url" value="{{ $url }} ">
 
-              {{--　削除確認ウィンドウ --}}
-              <div id="del-confirm-mask" class="del-confirm-mask"></div>
-              <div id="del-modal" class="del-modal" data-target="del-modal{{ $loop->index }}">
-                <p class="del-message">{{ $title }} を削除しますか？</p>
-                <div class="del-btns">
-                  <button id="del-ok" class="btn btn-danger">削除する</button>
-                  <div id="del-cancel" class="btn btn-default">キャンセル</div>
+              <!-- モーダル・ダイアログ -->
+              <div class="modal fade" id="sampleModal{{ $loop->index }}" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                      <h4 class="modal-title">本当に削除してもよいですか？</h4>
+                    </div>
+                    <div class="modal-body">
+                      削除対象画像：{{ $title }}
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                      <button type="button" class="btn btn-primary">削除</button>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -52,31 +63,36 @@
     });
   </script>
   <script>
+    // サイドメニューの動作
     document.getElementById('menu').addEventListener('click' , function () {
       document.getElementById('nav').classList.toggle('in');
     });
   </script>
-  <script>
+  {{-- <script>
     //削除確認画面の動作
 	const open = document.getElementById('del-modal-open');
 	const close = document.getElementById('del-cancel');
-	const modal = document.getElementById('del-modal');
+	const dmodal = document.getElementById('del-modal');
 	const mask = document.getElementById('del-confirm-mask');
 
-	open.addEventListener('click', function () {
+
+
+	open.addEventListener('click', function (e) {
     mask.classList.remove('del-confirm-mask');
-	  modal.classList.remove('del-modal');
+	  dmodal.classList.remove('del-modal');
 	});
 
 	close.addEventListener('click',function () {
 		mask.classList.add('del-confirm-mask');
-    modal.classList.add('del-modal');
+    dmodal.classList.add('del-modal');
 	});
 
 	mask.addEventListener('click',function () {
 		close.click();
 	});
-  </script>
+  </script> --}}
+  {{-- <script src="/Users/pasutau/Projects/curry-app/resources/js/app.js"></script> --}}
+
   @endif
 </body>
 </html>

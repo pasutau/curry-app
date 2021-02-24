@@ -1,5 +1,4 @@
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/bootflat/2.0.4/css/bootflat.min.css');
 
 /* 背景 */
 body {
@@ -30,10 +29,6 @@ body::before {
     font-family: 'Potta One', cursive;
     flex:none;
 }
-
-/* .content {
-    display: flex;
-} */
 
 /* =======ナビゲーションバー======= */
 .navbar {
