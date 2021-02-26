@@ -1,17 +1,6 @@
-@include('components.header')
-<aside>
-  <nav id="nav" class="in">
-    <ul>
-      <li><a href="#">トップ</a></li>
-      <li><a href="#">ログイン</a></li>
-      <li><a href="#">ユーザ登録</a></li>
-      <li><a href="#">投稿</a></li>
-      <li><a href="#">投稿一覧</a></li>
-    </ul>
-  </nav>
-</aside>
+@extends('layouts.curry-app')
 
-<main>
+@section('content')
   <div class="content">
     <div class="cards">
 
@@ -54,23 +43,12 @@
             </form>
         </div>
       @endforeach
+
     </div>
   </div>
-</main>
-@if(Auth::check())
-  <script>
-    document.getElementById('logout').addEventListener('click', function(event) {
-      event.preventDefault();
-      document.getElementById('logout-form').submit();
-    });
-  </script>
-  <script>
-    // サイドメニューの動作
-    document.getElementById('menu').addEventListener('click' , function () {
-      document.getElementById('nav').classList.toggle('in');
-    });
-  </script>
-  @endif
-  <script src="{{ asset('js/app.js') }}" defer></script>
-</body>
-</html>
+@endsection
+@section('script')
+{{-- 削除モーダル画面用にbootstrap読み込み --}}
+  @parent
+  <script src="{{ mix('js/app.js') }}"></script>
+@endsection

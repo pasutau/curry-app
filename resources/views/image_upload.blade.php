@@ -1,50 +1,37 @@
-@include('components.header')
-  <main>
-  <form action="upload" method="POST" enctype="multipart/form-data">
-    @csrf
-    <div class="upload_container">
-      <label for="image_upload"></label>
-      <div class="custom-file">
-        <label for="title_name">アップロード画像</label>
-        <input type="file" class="custom-file-input" id="file" name="file" onchange="previewImage(this);">
-      </div>
-      <canvas id="preview" style="max-width: 200px"></canvas>
-      <div class="title_block">
-        <label for="title_name">画像タイトル名</label>
-        <input type="text" class="form-control" id="image_file_name" name="image_file_name">
-          <div class="upload_btn">
-            <button type="submit" class="btn btn-primary btn-block">投稿</button>
+@extends('layouts/curry-app')
+
+@section('content')
+<div class="container">
+<div class="d-flex flex-column align-items-center">
+  <div class="card w-75">
+    <form action="upload" method="POST" enctype="multipart/form-data">
+      @csrf
+      <div class="upload_container">
+        <div class="card-header">投稿したい画像を選択してください。</div>
+        <div class="card-body">
+          <div class="d-flex">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="file" name="file" onchange="previewImage(this);">
           </div>
+          <canvas id="preview" style="max-width: 300px"></canvas>
+        </div>
+          <div class="title_block">
+            <label for="title_name">画像タイトル名</label>
+            <input type="text" class="form-control" id="image_file_name" name="image_file_name">
+              <div class="upload_btn">
+                <button type="submit" class="btn btn-primary btn-block">投稿</button>
+              </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </form>
-  {{-- headerのユーザログイン状態遷移 --}}
-  @if(Auth::check())
-  <script>
-    document.getElementById('logout').addEventListener('click', function(event) {
-      event.preventDefault();
-      document.getElementById('logout-form').submit();
-    });
-  </script>
-  @endif
+    </form>
+  </div>
+</div>
+</div>
+@endsection
+
+@section('script')
+  @parent
   {{-- 投稿画像のプレビュー表示 --}}
-  <script>
-    function previewImage(obj)  {
-      var fileReader = new FileReader();
-      fileReader.onload = (function() {
-        var canvas = document.getElementById('preview');
-        var ctx = canvas.getContext('2d');
-        var image = new Image();
-        image.src = fileReader.result;
-        image.onload = (function () {
-          canvas.width = image.width;
-          canvas.height = image.height;
-          ctx.drawImage(image, 0, 0);
-        });
-	    });
-	    fileReader.readAsDataURL(obj.files[0]);
-    }
-  </script>
-  </main>
-</body>
-</html>
+  <script src="{{ mix('js/img-preview.js') }}"></script>
+@endsection

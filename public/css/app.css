@@ -2263,6 +2263,7 @@ textarea.form-control {
 
 .form-group {
   margin-bottom: 1rem;
+  background-color: peachpuff;
 }
 
 .form-text {
@@ -4186,7 +4187,7 @@ input[type=button].btn-block {
   height: calc(1.6em + 0.75rem + 2px);
   margin: 0;
   overflow: hidden;
-  opacity: 0;
+  /* opacity: 0; 【修正】ファイル選択ボタンが見えない為*/
 }
 
 .custom-file-input:focus ~ .custom-file-label {
@@ -6311,9 +6312,7 @@ a.close.disabled {
 }
 
 .modal-header {
-/*【修正】モーダルヘッダー×ボタンの位置調整の為、
-  display: flex;
-*/
+  /* display: flex;【修正】*/
   align-items: flex-start;
   justify-content: space-between;
   padding: 1rem 1rem;
@@ -6336,10 +6335,6 @@ a.close.disabled {
   position: relative;
   flex: 1 1 auto;
   padding: 1rem;
-}
-
-div.modal-body {
-  font-size: 1.5rem;
 }
 
 .modal-footer {
