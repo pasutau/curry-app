@@ -1,8 +1,8 @@
 @extends('layouts/curry-app')
 
 @section('content')
-<div class="container" style="margin-top: 300px;margin-bottom: 15%;">
-  <div class="d-flex flex-column mx-auto w-50">
+<div class="menu-layout">
+  <div class="d-flex flex-column mx-auto vw-40">
     <nav class="card card-warning">
       <div class="card-header">ログイン</div>
       <div class="card-body">

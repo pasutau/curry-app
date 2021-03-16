@@ -1,3 +1,8 @@
+/* 共通 */
+a {
+    display: block;
+}
+
 /* 背景 */
 body {
     background-image: url('/images/background-image-2.png');
@@ -49,7 +54,7 @@ body::before {
 .my-navbar-brand,
 .my-navbar-item {
     color: #8c8c8c;
-    margin: 0 15px;
+    margin: 0 1.5vw;
 }
 
 .my-navbar-brand:hover,
@@ -132,6 +137,40 @@ ul {
     transform: translateX(100%);
   }
 
+/* =======メニュー一覧======= */
+.menu-layout {
+    margin-top: 300px;
+    margin-bottom: 15%;
+}
+
+.vw-40 {
+    width: 40vw;
+}
+/* タブレット用 */
+@media(max-width: 768px)     {
+    .menu-layout {
+        margin-top: 25vh;
+    }
+
+    .vw-40 {
+        width: 50vw;
+    }
+    }
+
+/* スマホ用 */
+@media(max-width: 479px) {
+    .menu-layout {
+        margin-top: 25vh;
+    }
+    .vw-40 {
+        width: 80vw;
+    }
+}
+
+
+
+
+
 
 /* =======ユーザ登録======= */
 .container {
@@ -141,16 +180,6 @@ ul {
 
 
 /* =======画像投稿======= */
-/* .upload_container {
-    margin: 15px;
-    width: 60%;
-} */
-
-/* .upload_container label[for="title_name"] {
-    color:#f9f9f9;
-
-} */
-
 .upload_container .upload_btn {
     margin-top: 20px;
 }
@@ -158,6 +187,12 @@ ul {
 .upload_container .title_block {
     width: 60%;
     margin-top: -15%;
+}
+
+@media(max-width: 479px) {
+    .w-75 {
+        width: 100% !important;
+    }
 }
 
 
@@ -192,6 +227,7 @@ ul {
        width: 75%;
        padding: 10px;
    }
+
     .cards {
         width:auto;
         justify-content: center;
@@ -215,3 +251,18 @@ a.img-title {
 }
 
 /* =======マイページ======= */
+.not-img-title {
+    font-family: 'Potta One', cursive;
+    color: rgb(87, 82, 118);
+    font-size:1.5rem;
+}
+
+@media(max-width: 479px) {
+    .not-img-title {
+        font-size: 1.1rem;
+    }
+
+    .mypage-not-img {
+        font-size: 1.8rem;
+    }
+}

@@ -3,6 +3,14 @@
 @section('content')
   <div class="content">
     <div class="cards">
+      {{-- DBから取得したログインユーザの投稿画像が0件の場合--}}
+        {{-- 表示する画像がないことと、投稿画像ページへのリンクを表示する --}}
+        @empty($image_info)
+          <div class="align-items-center m-auto">
+            <h1 class="mypage-not-img">表示する画像がありません。</h1>
+            <a class="not-img-title" href="image_upload">記念すべき一つ目のカレーを投稿しましょう！</a>
+          </div>
+        @endempty
 
       {{-- 投稿画像、タイトル一覧表示 --}}
       @foreach ($image_info as $url=>$title)
@@ -44,7 +52,7 @@
         </div>
       @endforeach
 
-    </div>
+      </div>
   </div>
 @endsection
 @section('script')
