@@ -3,18 +3,18 @@
 @section('content')
 <div class="container">
 <div class="d-flex flex-column align-items-center">
-  <div class="card w-75">
+  <div class="card w-75-arrange">
     <form action="upload" method="POST" enctype="multipart/form-data">
       @csrf
       <div class="upload_container">
         <div class="card-header">投稿したい画像を選択してください。</div>
         <div class="card-body">
           <div class="d-flex">
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="file" name="file" onchange="previewImage(this);">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="file" name="file" onchange="previewImage(this);">
+            </div>
+            <canvas class="img-preview" id="preview"></canvas>
           </div>
-          <canvas id="preview" style="max-width: 300px"></canvas>
-        </div>
           <div class="title_block">
             <label for="title_name">画像タイトル名</label>
             <input type="text" class="form-control" id="image_file_name" name="image_file_name">

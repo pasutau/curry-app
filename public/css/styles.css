@@ -189,12 +189,29 @@ ul {
     margin-top: -15%;
 }
 
-@media(max-width: 479px) {
-    .w-75 {
+.w-75-arrange {
+    width: 75%;
+}
+
+.img-preview {
+    max-width: 300px;
+}
+
+@media(max-width: 768px) {
+    .w-75-arrange {
         width: 100% !important;
+    }
+
+    .img-preview {
+        max-width: 245px;
     }
 }
 
+@media(max-width: 479px) {
+    .img-preview {
+        max-width: 100px;
+    }
+}
 
 /* =======投稿画像一覧======= */
 /* 投稿画像コンテンツ */
