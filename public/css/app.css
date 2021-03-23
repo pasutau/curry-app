@@ -4190,6 +4190,13 @@ input[type=button].btn-block {
   /* opacity: 0; 【修正】ファイル選択ボタンが見えない為*/
 }
 
+@media (max-width: 479px) {
+  .custom-file-input {
+    width: 130%;
+  }
+}
+
+
 .custom-file-input:focus ~ .custom-file-label {
   border-color: #a1cbef;
   box-shadow: 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
