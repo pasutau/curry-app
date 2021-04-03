@@ -10,6 +10,7 @@ body {
     z-index: 0;
     overflow: hidden;
     background-color: #00a3af;
+    background-size: contain;
 }
 
 body::before {
@@ -24,6 +25,18 @@ body::before {
     right: -8px;
     bottom: -8px;
     z-index: -1;
+}
+
+@media(max-width: 479px) {
+    body {
+        background-size: contain;
+        background-image: url('/images/background-image_spver2.png');
+    }
+
+    body::before {
+        background-size: contain;
+        background-image: url('/images/background-image_spver2.png');
+    }
 }
 
 /* 画面タイトル */
