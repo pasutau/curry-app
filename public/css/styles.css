@@ -122,6 +122,12 @@ ul {
     z-index: 1;
 }
 
+@media(max-width: 479px)    {
+    #nav {
+        right: -10%;
+    }
+}
+
 #nav ul {
     padding-top: 80px;
 }
